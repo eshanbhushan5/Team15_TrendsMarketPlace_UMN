@@ -1,0 +1,77 @@
+# This is the Lambda function we built in AWS - 
+# An Amazon S3 trigger that retrieves metadata for the object that has been updated
+
+import json
+import urllib.parse
+import boto3
+import os
+
+from email.message import EmailMessage
+
+s3 = boto3.client('s3')
+ses = boto3.client('ses')
+
+
+def lambda_handler(event, context):
+    # print("Received event: " + json.dumps(event, indent=2))
+    # Get the object from the event and show its content type
+    
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+    print('Got object {} in bucket {}.'.format(key, bucket))
+    email_addresses = get_emails("trends6330")
+
+    pdf = get_pdf(bucket, key)
+    email = create_email(email_addresses, pdf['Body'], os.path.basename(key))
+    send_email(email, email_addresses)
+
+def get_pdf(bucket, key):
+    try:
+        response = s3.get_object(Bucket=bucket, Key=key)
+        return response
+    except Exception as e:
+        print(e)
+        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+        raise e
+
+def get_emails(bucket):
+    key = 'emails.csv'
+    try:
+        print('Getting Emails')
+        response = s3.get_object(Bucket=bucket, Key=key)
+        email_array = response['Body'].read().decode("utf-8").split(",")
+        return email_array
+    except Exception as e:
+        print(e)
+        print('Error getting emails from s3')
+        raise e
+        
+        
+def create_email(toEmails, attachment, file_name):
+    email = EmailMessage()
+    email["Subject"] = os.environ['SUBJECT']
+    email['From'] = os.environ['FROM_EMAIL']
+    email['To'] = ', '.join(toEmails)
+    email.set_content(os.environ['CONTENT'])
+    data = attachment.read()
+    email.add_attachment(
+        data,
+        maintype="application",
+        subtype="pdf",
+        filename=file_name
+    )
+    return email
+
+def send_email(email, toEmails):
+    try:
+        response = ses.send_raw_email(
+            Source=os.environ['FROM_EMAIL'],
+            Destinations=[os.environ['FROM_EMAIL']],
+            RawMessage={'Data': email.as_string()}
+        )
+    except Exception as e:
+        print(e)
+        print('Error sending raw email')
+        raise e
+    else:
+        print("email sent successfully")
