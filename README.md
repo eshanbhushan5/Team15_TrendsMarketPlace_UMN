@@ -1,5 +1,5 @@
 # Team 14 - Manage and Share Big Data Insights through AWS RedShift, QuickSight, and Lambda
-**MSBA 6330 Treands Marketplace Spring 2022**  
+**MSBA 6330 Trends Marketplace Spring 2022**  
 Eshan Bhushan, Bradshaw Irish, Likhith Karanuthala, Ka Lok Carol Ng, and Sheetal Pasam
 
 ## Full Presentation Video Found Here: 
