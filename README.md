@@ -10,7 +10,7 @@ Our project seeks to showcase the ease of ingesting big data into AWS S3, creati
   
 This project uses the Iowa Liquor Sales 2020 dataset available on Kaggle through [this link](https://kaggle.com/datasets/sibmike/iowaliquorsales2020). This dataset includes transactions for multiple locations and dates throughout Iowa and includes both structured data, such as price per unit sold, and unstructured data, such as free text product descriptions. The goal of the project is not to explore this particular dataset for actionable insights, but to show the process of ingesting, manipulating, visualizing, and sharing data for such a large and complex file. Our pipeline could be adapted easily to other forms of transactional data, or the principles could be aplied to another large data source or project.  
 
-You can view our summary handout [here](Team14_TrendsHandout.pdf) or our full presentation slides [here](/Team 14 - Full Presentation.pdf). A 10 minute video of our presentation including demonstrations of S3, RedShift, QuickSight, and Lambda is hosted on youtube and linked above. You can also view the individual video demos on youtube through the following links:
+You can view our summary handout [here](Team14_TrendsHandout.pdf) or our full presentation slides [here](<Team 14 - Full Presentation.pdf>). A 10 minute video of our presentation including demonstrations of S3, RedShift, QuickSight, and Lambda is hosted on youtube and linked above. You can also view the individual video demos on youtube through the following links:
 - [S3 and RedShift](https://youtu.be/DXHbHHed9vA)
 - [QuickSight](https://youtu.be/yPrk14ex-ew)
 - [Lambda](https://youtu.be/9kuMvx_Qxd4)
