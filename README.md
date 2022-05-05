@@ -44,10 +44,9 @@ Here is a simple dashboard build by Quicksight, interactive features, month, sho
 <img width="791" alt="image" src="https://user-images.githubusercontent.com/50436546/167038123-d22eb152-9bb2-4987-bcd1-739163c1aa48.png">
 <img width="791" alt="image" src="https://user-images.githubusercontent.com/50436546/167038211-19122d6a-e5f1-4eae-b76c-5ef79e46704a.png">
 
-3. We wrote a lambda function that detects for any trigger config in S3, and passes an event to SES to send an email to a distribution list.  so Now whenever we save the "Iowa Liquor Sales.pdf" to S3  folder "trends 6330", an email is automatically sent out.
-
+3. We wrote a lambda function that detects for any trigger config in S3, and passes an event to SES to send an email to a distribution list. Now whenever we save the "Iowa Liquor Sales.pdf" to S3  folder "trends 6330", an email is automatically sent out. For function code please go <a href="https://github.com/eshanbhushan5/Team15_TrendsMarketPlace_UMN/blob/main/lambda_quicksight-share"><u><b>here</u></b></a>.
 <img width="791" alt="image" src="https://user-images.githubusercontent.com/50436546/167038427-e5994e16-12a3-4594-a72e-6d6908a35e4f.png">
-
+  
 4. In S3 bucket you can upload an "email.csv" with the subject and body you designed. And we save the Iowa Liquor Sales reports in the folder in S3.
 <img width="791" alt="image" src="https://user-images.githubusercontent.com/50436546/167038493-0f4e3a06-c74e-472e-ba38-c2b0aaa73ded.png">
 <img width="791" alt="image" src="https://user-images.githubusercontent.com/50436546/167038534-6393cecd-506e-454b-8f23-9bfd2c87b809.png">
